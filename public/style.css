@@ -6,7 +6,7 @@
   text-decoration: none;
   transition: all 0.4s;
   font-family: var(--main-font);
-  color: #fff;
+  color: var(--text);
 }
 
 body {
@@ -15,6 +15,15 @@ body {
 
 html {
   scroll-behavior: smooth;
+}
+
+.section {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 ::-webkit-scrollbar {
@@ -26,5 +35,8 @@ html {
   --main-font: "Caveat", serif;
 
   --dark-blue: #0b151e;
+  --blue: #26619c;
+  --blue-hover: #15395d;
   --gray: #2a3439;
+  --text: #f5f5f5;
 }

@@ -1,18 +1,20 @@
 <template>
-  <section class="start-page-section">
+  <section class="start-page-section section">
     <h1 class="start-page-heading">Misty Shadows</h1>
-    <button class="start-game-btn">Start</button>
+    <button class="start-game-btn" @click="startGame">Start</button>
   </section>
 </template>
-<script></script>
+<script>
+export default {
+  methods: {
+    startGame() {
+      this.$router.push("/name");
+    },
+  },
+};
+</script>
 <style scoped>
 .start-page-section {
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   gap: 48px;
 }
 
