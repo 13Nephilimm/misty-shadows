@@ -5,6 +5,12 @@
   list-style: none;
   text-decoration: none;
   transition: all 0.4s;
+  font-family: var(--main-font);
+  color: #fff;
+}
+
+body {
+  background-color: var(--gray);
 }
 
 html {
@@ -18,4 +24,7 @@ html {
 :root {
   --accent-font: "Trade Winds", serif;
   --main-font: "Caveat", serif;
+
+  --dark-blue: #0b151e;
+  --gray: #2a3439;
 }
