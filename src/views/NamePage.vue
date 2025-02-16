@@ -42,7 +42,6 @@ export default {
 <style scoped>
 .name-page-section {
   gap: 36px;
-  position: relative;
 }
 
 .game-logo {
