@@ -55,6 +55,23 @@ export default {
   text-align: center;
 }
 
+.game-logo::after {
+  content: "";
+  width: 500px;
+  left: 50%;
+  display: block;
+  position: absolute;
+  transform: translateX(-50%);
+  bottom: 50%;
+  background: radial-gradient(
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0.8)
+  );
+  border-radius: 50%;
+  box-shadow: 0 0 50px 25px rgba(255, 255, 255, 0.7);
+  z-index: -1;
+}
+
 .name-page-heading {
   font-size: 48px;
   text-align: center;
@@ -83,7 +100,7 @@ export default {
 }
 
 .name-sumbit-btn {
-  background-color: var(--blue);
+  background-color: transparent;
   border-radius: 4px;
   border: 2px solid var(--text);
   padding: 10px 24px;
@@ -94,7 +111,7 @@ export default {
 }
 
 .name-sumbit-btn:hover {
-  background-color: var(--blue-hover);
+  background-color: var(--dark-blue-hover);
   cursor: pointer;
 }
 </style>

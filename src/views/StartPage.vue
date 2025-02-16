@@ -23,7 +23,25 @@ export default {
   font-family: var(--accent-font);
   text-align: center;
   color: var(--dark-blue);
-  text-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.7);
+  position: relative;
+}
+
+.start-page-heading::after {
+  content: "";
+  width: 500px;
+  left: 50%;
+  display: block;
+  position: absolute;
+  transform: translateX(-50%);
+  bottom: 50%;
+  background: radial-gradient(
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0.8)
+  );
+  border-radius: 50%;
+  box-shadow: 0 0 50px 35px rgba(255, 255, 255, 0.7);
+  z-index: -1;
 }
 
 .start-game-btn {
