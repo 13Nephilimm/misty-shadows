@@ -8,8 +8,10 @@ export default createStore({
         id: 1,
         fullName: "Chris Johnson",
         nickname: "The Reaper",
-        shortStory: "",
-        fullStory: "",
+        shortStory:
+          "A soldier turned rebel, warrior with unmatched combat instincts. If you see his headlights in your mirror, it's already too late.",
+        fullStory:
+          "Once a decorated soldier, Chris 'The Reaper' Johnson returned home to find the city overrun by corrupt corporations and crime. Betrayed by his own government, he abandoned his past and joined the notorious 'Road Hellhounds', a gang of outlaw bikers who take justice into their own hands. With his tactical skills and fearless nature, he quickly became their enforcer, feared on the highways and in battle. Now, he rides with one goal—burning down the corrupt system that left him behind.",
       },
       {
         id: 2,

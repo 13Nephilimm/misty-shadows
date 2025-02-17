@@ -5,15 +5,29 @@
     <div class="characters-container">
       <div
         class="card"
-        v-for="k in characters"
-        :class="{ flipped: isFlipped }"
-        @click="flipCard"
+        v-for="(character, index) in characters"
+        :key="index"
+        :class="{ flipped: flippedCards[index] }"
+        @click="flipCard(index)"
       >
-        <div class="card-front">
-          <h2>Front Side</h2>
-          <p>This is the front of the card.</p>
+        <div class="card-front" :class="`card-front-${index + 1}`">
+          <div class="image-container">
+            <img
+              :src="`/assets/characters/character-${index + 1}.jpg`"
+              alt="character-image"
+            />
+          </div>
+          <div class="text-box">
+            <div class="names-box">
+              <p :class="`full-name-${index + 1}`">{{ character.fullName }}</p>
+              <h3 :class="`nickname-${index + 1}`">{{ character.nickname }}</h3>
+            </div>
+            <p :class="`short-story-${index + 1}`">
+              {{ character.shortStory }}
+            </p>
+          </div>
         </div>
-        <div class="card-back">
+        <div class="card-back" :class="`card-back-${index + 1}`">
           <h2>Back Side</h2>
           <p>This is the back of the card.</p>
         </div>
@@ -21,22 +35,27 @@
     </div>
   </section>
 </template>
+
 <script>
 export default {
   data() {
     return {
       username: this.$store.state.username,
       characters: this.$store.state.characters,
-      isFlipped: false,
+      flippedCards: {},
     };
   },
   methods: {
-    flipCard() {
-      this.isFlipped = !this.isFlipped;
+    flipCard(index) {
+      this.flippedCards = {
+        ...this.flippedCards,
+        [index]: !this.flippedCards[index],
+      };
     },
   },
 };
 </script>
+
 <style scoped>
 .game-logo {
   position: absolute;
@@ -73,31 +92,125 @@ export default {
   cursor: pointer;
 }
 
+.card-front {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+}
+
+.image-container {
+  width: 300px;
+  height: 350px;
+  clip-path: polygon(
+    2% 2%,
+    98% 2%,
+    98% 50%,
+    98% 98%,
+    75% 98%,
+    60% 85%,
+    2% 85%,
+    2% 50%
+  );
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+}
+
+.text-box {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
 .card-front,
 .card-back {
   position: absolute;
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 20px;
-  border-radius: 10px;
+  border-radius: 8px;
 }
 
 .card.flipped {
   transform: rotateY(180deg);
 }
 
-.card-front {
-  background-color: #ffcc00;
+.card-back {
+  transform: rotateY(180deg);
+}
+
+/* Each Character Front/Back */
+
+.card-front-1 {
+  background-color: var(--red);
   color: #fff;
 }
 
-.card-back {
-  background-color: #0099cc;
+.card-back-1 {
+  background-color: var(--red);
+}
+
+.card-front-2 {
+  background-color: var(--purple);
   color: #fff;
-  transform: rotateY(180deg);
+}
+
+.card-back-2 {
+  background-color: var(--purple);
+}
+
+.card-front-3 {
+  background-color: var(--blue);
+  color: #fff;
+}
+
+.card-back-3 {
+  background-color: var(--blue);
+}
+
+.card-front-4 {
+  background-color: var(--yellow);
+  color: #fff;
+}
+
+.card-back-4 {
+  background-color: var(--yellow);
+}
+
+/* Each Character Texts */
+.nickname-1 {
+  position: absolute;
+  top: -30%;
+  letter-spacing: 3px;
+  left: 3%;
+  font-size: 24px;
+  font-family: var(--accent-font);
+  color: #5f2121;
+  text-transform: uppercase;
+}
+
+.full-name-1 {
+  font-weight: 700;
+  position: absolute;
+  color: #000;
+  top: -52%;
+  font-size: 20px;
+  left: 3%;
+}
+
+.short-story-1 {
+  padding: 4px;
+  margin: 8px;
+  color: #290e0e;
+  font-weight: 600;
+  border: 1px solid #000;
+  border-radius: 8px;
 }
 </style>
