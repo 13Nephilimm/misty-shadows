@@ -28,8 +28,9 @@
           </div>
         </div>
         <div class="card-back" :class="`card-back-${index + 1}`">
-          <h2>Back Side</h2>
-          <p>This is the back of the card.</p>
+          <span v-if="index === 0" class="mdi mdi-pistol"></span>
+          <div v-if="index === 0" class="line-horizontal"></div>
+          <div v-if="index === 0" class="line-vertical"></div>
         </div>
       </div>
     </div>
@@ -90,6 +91,7 @@ export default {
   transform-style: preserve-3d;
   transition: transform 0.6s;
   cursor: pointer;
+  transform: rotateY(180deg);
 }
 
 .card-front {
@@ -139,11 +141,15 @@ export default {
 }
 
 .card.flipped {
-  transform: rotateY(180deg);
+  transform: rotateY(0deg);
 }
 
 .card-back {
   transform: rotateY(180deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 
 /* Each Character Front/Back */
@@ -151,10 +157,12 @@ export default {
 .card-front-1 {
   background-color: var(--red);
   color: #fff;
+  border: 3px solid #000;
 }
 
 .card-back-1 {
   background-color: var(--red);
+  border: 5px solid #000;
 }
 
 .card-front-2 {
@@ -212,5 +220,36 @@ export default {
   font-weight: 600;
   border: 1px solid #000;
   border-radius: 8px;
+}
+
+.mdi-pistol {
+  font-size: 80px;
+  border: 5px solid #000;
+  border-radius: 50%;
+  padding: 16px 20px;
+  color: #000;
+  background-color: var(--red);
+}
+
+.line-horizontal {
+  position: absolute;
+  height: 5px;
+  width: 295px;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #000;
+  z-index: -1;
+}
+
+.line-vertical {
+  position: absolute;
+  height: 395px;
+  width: 5px;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  background-color: #000;
+  z-index: -1;
 }
 </style>
